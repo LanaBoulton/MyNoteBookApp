@@ -1,5 +1,6 @@
 package com.mywebnotebook.notebook.controller;
 
+import com.mywebnotebook.notebook.dto.CommentDto;
 import com.mywebnotebook.notebook.dto.NoteDto;
 import com.mywebnotebook.notebook.service.NoteService;
 import org.springframework.stereotype.Controller;
@@ -32,6 +33,10 @@ public class NotebookController {
     private String showNote(@PathVariable("noteUrl") String noteUrl,
                             Model model) {
         NoteDto noteDto = noteService.findNoteByUrl(noteUrl);
+        //adding comment section
+        CommentDto commentDto = new CommentDto();
+        model.addAttribute("comment", commentDto);
+        //
         model.addAttribute("note", noteDto);
         return "notebook/notebook_note";
     }

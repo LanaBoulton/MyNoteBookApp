@@ -3,6 +3,8 @@ package com.mywebnotebook.notebook.mapper;
 import com.mywebnotebook.notebook.dto.NoteDto;
 import com.mywebnotebook.notebook.entity.Note;
 
+import java.util.stream.Collectors;
+
 public class NoteMapper {
     //make static so we don't need to create an object of NoteMapper class,
     //we will just simply use a class name to call static methods
@@ -17,6 +19,9 @@ public class NoteMapper {
                 .shortDescription(note.getShortDescription())
                 .createdOn(note.getCreatedOn())
                 .updatedOn(note.getUpdatedOn())
+                .comments(note.getComments().stream()
+                        .map(comment -> CommentMapper.mapToCommentDto(comment))
+                                .collect(Collectors.toSet()))
                 .build();
 //        NoteDto noteDto = NoteDto.builder().
 //                id(note.getId())
