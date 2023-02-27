@@ -9,9 +9,10 @@ public class NoteMapper {
     //map Note entity to PostDto
 
     public static NoteDto mapToNoteDto(Note note){
-        return NoteDto.builder().
-                id(note.getId())
+        return NoteDto.builder()
+                .id(note.getId())
                 .title(note.getTitle())
+                .url(note.getUrl())
                 .content(note.getContent())
                 .shortDescription(note.getShortDescription())
                 .createdOn(note.getCreatedOn())
@@ -34,6 +35,7 @@ public class NoteMapper {
                 id(noteDto.getId())
                 .title(noteDto.getTitle())
                 .content(noteDto.getContent())
+                .url(noteDto.getUrl())
                 .shortDescription(noteDto.getShortDescription())
                 .createdOn(noteDto.getCreatedOn())
                 .updatedOn(noteDto.getUpdatedOn())

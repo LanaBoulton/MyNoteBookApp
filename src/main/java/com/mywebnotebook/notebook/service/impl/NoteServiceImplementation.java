@@ -31,4 +31,41 @@ public class NoteServiceImplementation implements NoteService {
         //implementing the logic to convert the list of JPA entities to list of DTOs
 
     }
+
+    @Override
+    public void createNote(NoteDto noteDto) {
+        Note note = NoteMapper.mapToNote(noteDto);
+        noteRepository.save(note);
+    }
+
+    @Override
+    public NoteDto findNoteById(Long noteId) {
+        Note note = noteRepository.findById(noteId).get();
+        return NoteMapper.mapToNoteDto(note);
+    }
+
+    @Override
+    public void updateNote(NoteDto noteDto) {
+        Note note = NoteMapper.mapToNote(noteDto);
+        noteRepository.save(note);
+    }
+
+    @Override
+    public void deleteNote(Long noteId) {
+        noteRepository.deleteById(noteId);
+    }
+
+    @Override
+    public NoteDto findNoteByUrl(String noteUrl) {
+        Note note = noteRepository.findByUrl(noteUrl).get();
+        return NoteMapper.mapToNoteDto(note);
+    }
+
+    @Override
+    public List<NoteDto> searchPosts(String query) {
+        List<Note> notes = noteRepository.searchNotes(query);
+        return notes.stream()
+                .map(NoteMapper::mapToNoteDto)
+                .collect(Collectors.toList());
+    }
 }
