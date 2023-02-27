@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<div th:replace="notebook/header :: header"></div>
+<body>
+<div th:replace="notebook/header :: navbar"></div>
+
+<div class = "container">
+    <div class = "row">
+        <div class ="col-md-9">
+            <div th:each = "note: ${notesResponse}">
+                <div class="card">
+                    <div class="card-header">
+                       <h3>
+                           <a th:href="@{/note/{noteUrl}(noteUrl=${note.url})}"
+                           th:text="${note.title}"></a>
+                       </h3>
+                        <div>
+                            <strong th:text="${#temporals.format(note.createdOn, 'dd MMM yyyy')}">
+
+                            </strong>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <span th:text="${note.shortDescription}"></span>
+                        <a th:href="@{/note/{noteUrl}(noteUrl=${note.url})}">Read details</a>
+                    </div>
+                </div>
+                <br />
+            </div>
+        </div>
+        <div class ="col-md-3">
+            <div th:replace = "notebook/search :: search"></div>
+        </div>
+    </div>
+</div>
+<div th:replace="notebook/footer::footer"></div>
+</body>
+</html>

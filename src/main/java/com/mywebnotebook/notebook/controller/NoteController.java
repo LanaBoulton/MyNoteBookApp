@@ -93,7 +93,7 @@ public class NoteController {
     @GetMapping("/admin/notes/search")
     public String searchNotes(@RequestParam(value = "query") String query,
                               Model model){
-        List<NoteDto> notes = noteService.searchPosts(query);
+        List<NoteDto> notes = noteService.searchNotes(query);
         model.addAttribute("notes", notes);
         return "admin/notes";
     }

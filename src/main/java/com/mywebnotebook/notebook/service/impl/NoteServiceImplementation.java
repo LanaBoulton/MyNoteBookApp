@@ -62,7 +62,7 @@ public class NoteServiceImplementation implements NoteService {
     }
 
     @Override
-    public List<NoteDto> searchPosts(String query) {
+    public List<NoteDto> searchNotes(String query) {
         List<Note> notes = noteRepository.searchNotes(query);
         return notes.stream()
                 .map(NoteMapper::mapToNoteDto)

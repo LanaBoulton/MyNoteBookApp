@@ -17,5 +17,5 @@ public interface NoteService {
 
   NoteDto findNoteByUrl(String noteUrl);
 
-  List<NoteDto> searchPosts(String query);
+  List<NoteDto> searchNotes(String query);
 }
