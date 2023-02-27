@@ -24,7 +24,6 @@ public class NotebookController {
         List<NoteDto> notesResponse = noteService.findAllNotes();
         model.addAttribute("notesResponse", notesResponse);
         return "notebook/view_notes";
-
     }
 
     //handler method to handle view post request
