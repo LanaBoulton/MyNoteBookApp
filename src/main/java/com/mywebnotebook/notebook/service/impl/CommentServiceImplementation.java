@@ -9,6 +9,9 @@ import com.mywebnotebook.notebook.repository.NoteRepository;
 import com.mywebnotebook.notebook.service.CommentService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class CommentServiceImplementation implements CommentService {
 
@@ -29,5 +32,18 @@ public class CommentServiceImplementation implements CommentService {
         comment.setNote(note);
         commentRepository.save(comment);
 
+    }
+
+    @Override
+    public List<CommentDto> findAllComments() {
+        List<Comment> comments = commentRepository.findAll();
+        return comments.stream()
+                .map(CommentMapper::mapToCommentDto)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public void deleteComment(Long commentId) {
+        commentRepository.deleteById(commentId);
     }
 }

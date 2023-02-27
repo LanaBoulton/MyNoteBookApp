@@ -1,6 +1,8 @@
 package com.mywebnotebook.notebook.controller;
 
+import com.mywebnotebook.notebook.dto.CommentDto;
 import com.mywebnotebook.notebook.dto.NoteDto;
+import com.mywebnotebook.notebook.service.CommentService;
 import com.mywebnotebook.notebook.service.NoteService;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
@@ -13,10 +15,13 @@ import java.util.List;
 @Controller
 public class NoteController {
 
+    //injections:
     private NoteService noteService;
+    private CommentService commentService;
 
-    public NoteController(NoteService noteService) {
+    public NoteController(NoteService noteService, CommentService commentService) {
         this.noteService = noteService;
+        this.commentService=commentService;
     }
 
     //create handler method, GET request and return model and view
@@ -27,7 +32,26 @@ public class NoteController {
         model.addAttribute("notes", notes);
         return "/admin/notes";
     }
+
+    //handler method to handle to show list of comments
+    @GetMapping("/admin/notes/comments")
+    public String noteComments(Model model){
+        List<CommentDto> comments = commentService.findAllComments();
+        model.addAttribute("comments", comments);
+        return "admin/comments";
+    }
+
+    //handler method to delete comment
+    @GetMapping("/admin/notes/comments/{commentId}")
+    public String deleteComment(@PathVariable("commentId") Long commentId){
+        commentService.deleteComment(commentId);
+        return "redirect:/admin/notes/comments";
+    }
+
+
+
     //handler method to handle new note request
+    //http://localhost:8080/admin/notes/newnote
     @GetMapping("/admin/notes/newnote")
     public String newNoteForm (Model model) {
         NoteDto noteDto = new NoteDto();
