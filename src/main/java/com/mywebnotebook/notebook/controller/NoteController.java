@@ -48,8 +48,6 @@ public class NoteController {
         return "redirect:/admin/notes/comments";
     }
 
-
-
     //handler method to handle new note request
     //http://localhost:8080/admin/notes/newnote
     @GetMapping("/admin/notes/newnote")

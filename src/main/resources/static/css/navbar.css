@@ -1,0 +1,44 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Nunito', sans-serif;
+
+}
+
+.menu-bar {
+    background-image: linear-gradient(-15deg, #b21fcc, #170547);
+}
+
+.nav-link {
+    font-size: 16px;
+    margin: 3px;
+    color: aliceblue !important;
+    font-weight: 500;
+}
+
+.navbar-nav {
+    text-align: right;
+    margin-right: 20px;
+}
+
+.menu-bar .navbar-toggler {
+    padding-right: 20px;
+    outline: none !important;
+    border: none !important;
+}
+
+.navbar .fa-solid {
+    color: white;
+    font-size: 22px;
+}
+
+.nav-link:hover {
+    font-weight: 600;
+    border-bottom: 1px solid white;
+}
+
+@media only screen and (max-width: 1000px) {
+    .nav-link:hover {
+        border-bottom: none !important;
+    }
+}

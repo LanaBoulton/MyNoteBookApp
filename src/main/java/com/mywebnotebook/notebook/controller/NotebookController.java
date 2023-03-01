@@ -23,7 +23,6 @@ public class NotebookController {
 
     @GetMapping("/")
     public String welcome() {
-
         return "welcome_page";
     }
         @GetMapping("/main")
