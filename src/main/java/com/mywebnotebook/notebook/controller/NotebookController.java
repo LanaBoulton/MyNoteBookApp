@@ -20,12 +20,24 @@ public class NotebookController {
     }
 
     //handler method to handle http://localhost:8080/
+
     @GetMapping("/")
+    public String welcome() {
+
+        return "welcome_page";
+    }
+        @GetMapping("/main")
     public String viewNotebookNotes(Model model) {
         List<NoteDto> notesResponse = noteService.findAllNotes();
         model.addAttribute("notesResponse", notesResponse);
         return "notebook/view_notes";
     }
+//    @GetMapping("/")
+//    public String viewNotebookNotes(Model model) {
+//        List<NoteDto> notesResponse = noteService.findAllNotes();
+//        model.addAttribute("notesResponse", notesResponse);
+//        return "notebook/view_notes";
+//    }
 
     //handler method to handle view post request
     //http://localhost:8080/note/name-of-the-note
