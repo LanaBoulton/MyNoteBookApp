@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8" />
+  <title>Add ToDo</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+  <script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
+  <div th:replace="admin/header :: header"></div>
+</head>
+<body>
+<div th:replace="admin/header :: navbar"></div>
+<div align="center">
+  <br /><br />
+  <h1>Create New ToDo</h1>
+  <br />
+  <div class="col-sm-4">
+    <form action="#" th:action="@{/save}" th:object="${todo}" method="post">
+
+
+      <div align="left">
+        <tr>
+          <label class="form-label" >What would you like to do?</label>
+          <td>
+            <input type="hidden" th:field="*{id}" />
+            <input type="text" th:field="*{name}" class="form-control" placeholder="Enter your ToDo here" />
+          </td>
+        </tr>
+      </div>
+      <br />
+      <div align="left">
+        <tr>
+          <label class="form-label" >When would you like to do it?</label>
+          <td><input type="text" th:field="*{date}" class="form-control" placeholder="Enter date" /></td>
+        </tr>
+      </div>
+      <br />
+      <tr>
+        <td colspan="6"><button type="submit" class="btn btn-info">Save</button> </td>
+      </tr>
+      </table>
+    </form>
+  </div>
+</div>
+<div th:replace="admin/footer::footer"></div>
+</body>
+</html>
