@@ -9,29 +9,24 @@
 </head>
 <body>
 <div th:replace="admin/header :: navbar"></div>
-<div>
-  <h2 >My Todos</h2>
-  <tr>
-    <div align = "left" >
-      <h3><a  th:href="@{newtodo}">Add new</a></h3>
-    </div>
-  </tr>
-  <tr>
+<br /><br />
+<div align = "center">
+  <h2 >My Todos <a style="color:blue" th:href="@{newtodo}"><i class="fa-sharp fa-solid fa-plus"></i></a></h2>
+  <br /><br />
     <div class="col-sm-5" align = "center">
       <div class="panel-body" align = "center" >
         <table class="table">
           <thead class="thead-dark">
           <tr>
-            <th>ToDo #</th>
             <th>Description</th>
             <th>Date</th>
-            <th>Edit</th>
-            <th>Delete</th>
+            <th></th>
+            <th></th>
           </tr>
           </thead>
           <tbody>
           <tr  th:each="todo : ${listtodo}">
-            <td th:text="${todo.id}">ToDo #</td>
+
             <td th:text="${todo.name}">Description</td>
             <td th:text="${todo.date}">Date</td>
             <td>
@@ -47,8 +42,6 @@
       </div>
 
     </div>
-
-  </tr>
 
   </tbody>
   </table>
