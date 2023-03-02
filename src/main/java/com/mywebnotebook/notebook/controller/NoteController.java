@@ -32,6 +32,10 @@ public class NoteController {
         model.addAttribute("notes", notes);
         return "/admin/notes";
     }
+    @GetMapping("/admin/calendar")
+    public String showMyCalendar() {
+        return "/admin/calendar";
+    }
 
     //handler method to handle to show list of comments
     @GetMapping("/admin/notes/comments")

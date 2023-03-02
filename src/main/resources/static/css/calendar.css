@@ -1,0 +1,14 @@
+.notebook {
+    background-image: url(../img/pexels-pixabay-36717.jpg);
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    text-align: center;
+    color: white;
+    font-size: 900;
+}
