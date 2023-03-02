@@ -44,7 +44,10 @@ public class NoteController {
         model.addAttribute("comments", comments);
         return "admin/comments";
     }
-
+    @GetMapping("/admin/search")
+    public  String search(){
+        return "/admin/search-page";
+    }
     //handler method to delete comment
     @GetMapping("/admin/notes/comments/{commentId}")
     public String deleteComment(@PathVariable("commentId") Long commentId){
