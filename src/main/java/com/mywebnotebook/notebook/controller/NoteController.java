@@ -55,7 +55,7 @@ public class NoteController {
         return "redirect:/admin/notes/comments";
     }
 
-    //handler method to handle new note request
+    //new note request
     //http://localhost:8080/admin/notes/newnote
     @GetMapping("/admin/notes/newnote")
     public String newNoteForm (Model model) {
@@ -65,7 +65,7 @@ public class NoteController {
     }
 
 
-    //handler method to handle form submit
+    //form submit
     @PostMapping("/admin/notes")
     public String createNote(@Valid @ModelAttribute("note") NoteDto noteDto,
                              BindingResult result,
@@ -78,7 +78,17 @@ public class NoteController {
         noteService.createNote(noteDto);
         return "redirect:/admin/notes";
     }
-    //handler method to handle edit post request
+    private static String getUrl (String noteTitle){
+        //Today's Lecture
+        //to convert to url style like:
+        //today-s-lecture
+        String title = noteTitle.trim().toLowerCase();
+        String url = title.replaceAll("\\s+", "-"); //replace all spaces with "-"
+        url=url.replaceAll("[^A-Za-z0-9]", "-");//replace all symbols with "-"
+        return url;
+    }
+
+    //request to edit post
     @GetMapping("/admin/notes/{noteId}/edit")
     public String editNoteForm(@PathVariable("noteId") Long noteId, Model model){
         NoteDto noteDto = noteService.findNoteById(noteId);
@@ -86,7 +96,7 @@ public class NoteController {
         return "admin/edit_note";
     }
 
-    //handler method to handle edit post form submit request
+    //edit post form submit request
     @PostMapping("/admin/notes/{noteId}")
     public String updateNote(@PathVariable("noteId") Long noteId,
                              @Valid @ModelAttribute("note") NoteDto noteDto,
@@ -101,14 +111,14 @@ public class NoteController {
         return "redirect:/admin/notes";
     }
 
-    //handler method to handle delete note request
+    //delete note request
     @GetMapping("/admin/notes/{noteId}/delete")
     public String deleteNote(@PathVariable("noteId") Long noteId){
         noteService.deleteNote(noteId);
         return "redirect:/admin/notes";
     }
 
-    //handler method to handle view note request
+    //view note request
     @GetMapping("/admin/notes/{noteUrl}/view")
     public String viewNote(@PathVariable("noteUrl") String noteUrl,
                            Model model){
@@ -117,7 +127,7 @@ public class NoteController {
         return "admin/view_note";
     }
 
-    //handler method to handle search notes
+    //search notes
     //localhost:8080/admin/posts/search?query=java
     @GetMapping("/admin/notes/search")
     public String searchNotes(@RequestParam(value = "query") String query,
@@ -126,13 +136,5 @@ public class NoteController {
         model.addAttribute("notes", notes);
         return "admin/notes";
     }
-    private static String getUrl (String noteTitle){
-        //Today's Lecture
-        //to convert to url style like:
-        //today-s-lecture
-        String title = noteTitle.trim().toLowerCase();
-        String url = title.replaceAll("\\s+", "-"); //replace all spaces with "-"
-        url=url.replaceAll("[^A-Za-z0-9]", "-");//replace all symbols with "-"
-        return url;
-    }
+
 }
