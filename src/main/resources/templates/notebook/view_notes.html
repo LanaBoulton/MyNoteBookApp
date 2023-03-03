@@ -5,9 +5,9 @@
 <body>
 <div th:replace="notebook/header :: navbar"></div>
 <br />
-<div class = "container">
-    <div class = "row">
-        <div class ="col-md-9">
+<div class = "container text-center">
+    <div class = "row justify-content-md-center">
+        <div class ="col-lg-6">
             <div th:each = "note: ${notesResponse}">
                 <div class="card">
                     <div class="card-header">
@@ -15,15 +15,15 @@
                            <a th:href="@{/note/{noteUrl}(noteUrl=${note.url})}"
                            th:text="${note.title}"></a>
                        </h3>
-                        <div>
-                            <strong th:text="${#temporals.format(note.createdOn, 'dd MMM yyyy')}">
+<!--                        <div>-->
+<!--                            <strong th:text="${#temporals.format(note.createdOn, 'dd MMM yyyy')}">-->
 
-                            </strong>
-                        </div>
+<!--                            </strong>-->
+<!--                        </div>-->
                     </div>
                     <div class="card-body">
-                        <span th:text="${note.shortDescription}"></span>
-                        <a th:href="@{/note/{noteUrl}(noteUrl=${note.url})}">Read details</a>
+<!--                        <span th:text="${note.shortDescription}"></span>-->
+                        <a th:href="@{/note/{noteUrl}(noteUrl=${note.url})}">Read my note</a>
                     </div>
                 </div>
                 <br />

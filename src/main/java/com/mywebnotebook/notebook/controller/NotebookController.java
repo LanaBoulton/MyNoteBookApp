@@ -19,12 +19,14 @@ public class NotebookController {
         this.noteService = noteService;
     }
 
-    //handler method to handle http://localhost:8080/
+    //starter page
+    //http://localhost:8080/
     @GetMapping("/")
     public String welcome() {
         return "welcome_page";
     }
-
+    //search page
+    //http://localhost:8080/search
     @GetMapping("/search")
     public String guestSearch() {
         return "notebook/search";
@@ -37,7 +39,7 @@ public class NotebookController {
         return "notebook/view_notes";
     }
 
-    //handler method to handle view post request
+    //view post request
     //http://localhost:8080/note/name-of-the-note
     @GetMapping("/note/{noteUrl}")
     private String showNote(@PathVariable("noteUrl") String noteUrl,
@@ -51,7 +53,7 @@ public class NotebookController {
         return "notebook/notebook_note";
     }
 
-    //handler method to handle notebook search request
+    //notebook search request for visitor
     //localhost:8080/page/search?query=java
     @GetMapping("/page/search")
     public String searchNotes(@RequestParam(value = "query") String query,
