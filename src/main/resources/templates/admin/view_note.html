@@ -6,7 +6,7 @@
 <body>
 <div th:replace="admin/header :: navbar"></div>
 <br /><br />
-<div class="container">
+<div class="container" style="background-color: rgba(227, 100, 197, 0.1);">
     <div class="row">
         <div class="col-md-8 offset-md-2">
             <h2 th:text="${note.title}"></h2>
@@ -19,6 +19,7 @@
 
     </div>
 </div>
+<br /><br /><br />
 <div th:replace="admin/footer :: footer"></div>
 </body>
 </html>

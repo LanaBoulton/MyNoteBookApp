@@ -1,24 +1,34 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org">
-<body>
-<div class = "card" th:fragment = "search">
-  <div class="card-header">
-    <h3 class="text-center">Notebook search</h3>
-  </div>
-  <div class="card-body">
-    <div class="form-group">
-      <form class = "form-inline" th:action="@{/page/search}" >
-        <div class = "input-group">
-          <input class = "form-control" name="query"/>
-          <span class="input-group-btn">
-            <button class = "btn btn-primary" type="submit">Search</button>
-          </span>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
 
+
+<div th:replace="notebook/header :: header"></div>
+<body>
+<div th:replace="notebook/header :: navbar"></div>
+<br/> <br/> <br/>
+<div class="container">
+    <div class="row col-md-6 offset-md-4">
+        <div class="card" th:fragment="search">
+            <div class="card-header">
+                <h3 class="text-center">Notebook search</h3>
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <form class="form-inline" th:action="@{/page/search}">
+                        <div class="input-group">
+                            <input class="form-control" name="query"/>
+                            <span class="input-group-btn">
+            <button class="btn btn-primary" type="submit">Search</button>
+          </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <br/> <br/> <br/> <br/>
+        </div>
+    </div>
+</div>
+<div th:replace="notebook/footer :: footer"></div>
 </body>
 </html>

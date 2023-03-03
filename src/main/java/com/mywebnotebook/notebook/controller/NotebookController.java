@@ -25,6 +25,11 @@ public class NotebookController {
     public String welcome() {
         return "welcome_page";
     }
+    @GetMapping("/search")
+    public String guestSearch() {
+        return "notebook/search";
+    }
+
         @GetMapping("/main")
     public String viewNotebookNotes(Model model) {
         List<NoteDto> notesResponse = noteService.findAllNotes();
