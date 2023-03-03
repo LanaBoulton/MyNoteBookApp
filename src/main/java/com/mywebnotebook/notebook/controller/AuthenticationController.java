@@ -5,7 +5,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class AuthenticationController {
 
-    //handler method to handle login page request
+    //login page request
+    //http://localhost:8080/login
     @GetMapping("/login")
     public String loginPage() {
         return "login";
