@@ -1,7 +1,4 @@
 package com.mywebnotebook.notebook.controller;
-
-
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -14,9 +11,4 @@ public class AuthenticationController {
         return "login";
     }
 
-
 }
-//    @GetMapping("/logout")
-//    public String logoutPage(){
-//        return "redirect:/";
-//    }

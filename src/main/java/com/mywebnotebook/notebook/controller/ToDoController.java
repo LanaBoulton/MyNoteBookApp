@@ -16,6 +16,9 @@ public class ToDoController {
     @Autowired
     private ToDoService service;
 
+    public ToDoController(ToDoService service) {
+    }
+
 
     @GetMapping("/admin/todo")
     public String viewHomePage(Model model) {
