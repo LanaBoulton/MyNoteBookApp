@@ -8,16 +8,16 @@
 <br /> <br /> <br />
 <div class="container">
     <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-8 offset-md-2">
             <h2 th:text="${note.title}"></h2>
             <hr/>
-            <h4 th:text="${note.shortDescription}"></h4>
-            <hr/>
+<!--            <h4 th:text="${note.shortDescription}"></h4>-->
+<!--            <hr/>-->
             <div th:utext="${note.content}">
             </div>
             <!--      adding comment section-->
             <hr/>
-            <h3>Comments:</h3>
+            <h2>Comments:</h2>
 <!--            iterating over set of comments in DTO-->
             <div th:each="comment: ${note.comments}">
                 <p><b>Name:</b><strong th:text="${comment.name}"></strong></p>
@@ -26,9 +26,10 @@
                 <br />
 
             </div>
+            <br /><br /><br />
             <div class="card">
                 <div class="card-header">
-                    <h2>Leave a comment</h2>
+                    <h3 class="text-center">Leave your comment</h3>
                 </div>
                 <div class="card-body">
                     <form role="form" method="post"
@@ -65,7 +66,7 @@
                                           id="content"
                                           name="content"
                                           placeholder="Enter comment"
-                                          rows="8"
+                                          rows="4"
                                           th:field="*{content}"
                                 >
                                 </textarea>
@@ -87,10 +88,6 @@
         </div>
         <!--      comment section end-->
 
-
-        <div class="col-md-3">
-            <div th:replace="notebook/search :: search"></div>
-        </div>
     </div>
     <br />  <br />  <br />  <br />
 </div>
