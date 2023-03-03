@@ -24,7 +24,6 @@ public class NoteDto {
     private String url;
     @NotEmpty(message = "Note content should not be empty")
     private String content;
-    @NotEmpty(message = "Note content should not be empty")
     private String shortDescription;
     private LocalDateTime createdOn;
     private LocalDateTime updatedOn;

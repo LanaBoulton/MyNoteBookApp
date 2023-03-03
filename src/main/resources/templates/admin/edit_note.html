@@ -28,19 +28,7 @@
             <p th:if="${#fields.hasErrors('title')}" class="text-danger"
                th:errors="*{title}"></p>
           </div>
-          <div class="mb-3">
-            <label class="form-label">Short Description</label>
-            <textarea
-                    class="form-control"
-                    id="shortDescription"
-                    placeholder="Enter short description"
-                    rows="3"
-                    name="shortDescription"
-                    th:field="*{shortDescription}">
-                        </textarea>
-            <p th:if="${#fields.hasErrors('shortDescription')}" class="text-danger"
-               th:errors="*{shortDescription}"></p>
-          </div>
+
           <div class="mb-3">
             <label class="form-label">Content</label>
             <textarea

@@ -5,31 +5,33 @@
 <div th:replace="notebook/header :: header"></div>
 <body>
 <div th:replace="notebook/header :: navbar"></div>
-<br /> <br /> <br />
-<div class="container">
+<br/> <br/> <br/>
+<div class="container" style="background-color: rgba(227, 100, 197, 0.1);">
     <div class="row">
         <div class="col-md-8 offset-md-2">
             <h2 th:text="${note.title}"></h2>
             <hr/>
-<!--            <h4 th:text="${note.shortDescription}"></h4>-->
-<!--            <hr/>-->
+            <!--            <h4 th:text="${note.shortDescription}"></h4>-->
+            <!--            <hr/>-->
             <div th:utext="${note.content}">
             </div>
             <!--      adding comment section-->
             <hr/>
             <h2>Comments:</h2>
-<!--            iterating over set of comments in DTO-->
+            <br/>
+            <!--            iterating over set of comments in DTO-->
             <div th:each="comment: ${note.comments}">
-                <p><b>Name:</b><strong th:text="${comment.name}"></strong></p>
-                <p><b>Date: <strong th:text="${#temporals.format(comment.createdOn, 'dd MMM yyyy')}"></strong></b></p>
-                <p th:text="${comment.content}"></p>
-                <br />
-
+                <p>On&nbsp;<strong th:text="${#temporals.format(comment.createdOn, 'MMM dd yyyy')}"></strong>
+                    <strong th:text="${comment.name}"></strong><span>&nbsp;said:&nbsp;&nbsp;&nbsp;</span><strong
+                            th:text="${comment.content}"></strong></p>
+                <hr/>
+                <br/>
             </div>
-            <br /><br /><br />
+            <br/><br/><br/>
             <div class="card">
                 <div class="card-header">
                     <h3 class="text-center">Leave your comment</h3>
+                    <h5 class="text-center">I would love to hear your opinion!</h5>
                 </div>
                 <div class="card-body">
                     <form role="form" method="post"
@@ -45,7 +47,7 @@
                                        placeholder="Enter name"
                                        th:field="*{name}"
                                 />
-                                <p th:if = "${#fields.hasErrors('name')}" th:errors="*{name}" class = "text-danger"></p>
+                                <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></p>
                             </div>
                         </div>
                         <div class="row">
@@ -57,7 +59,7 @@
                                        placeholder="Enter email"
                                        th:field="*{email}"
                                 />
-                                <p th:if = "${#fields.hasErrors('email')}" th:errors="*{email}" class = "text-danger">
+                                <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger">
                             </div>
                         </div>
                         <div class="row">
@@ -70,7 +72,7 @@
                                           th:field="*{content}"
                                 >
                                 </textarea>
-                                <p th:if = "${#fields.hasErrors('content')}" th:errors="*{content}" class = "text-danger">
+                                <p th:if="${#fields.hasErrors('content')}" th:errors="*{content}" class="text-danger">
                             </div>
                         </div>
                         <div class="row">
@@ -89,7 +91,7 @@
         <!--      comment section end-->
 
     </div>
-    <br />  <br />  <br />  <br />
+    <br/> <br/> <br/> <br/>
 </div>
 <div th:replace="notebook/footer :: footer"></div>
 </body>

@@ -11,18 +11,9 @@
             <div th:each = "note: ${notesResponse}">
                 <div class="card">
                     <div class="card-header">
-                       <h3>
-                           <a th:href="@{/note/{noteUrl}(noteUrl=${note.url})}"
-                           th:text="${note.title}"></a>
-                       </h3>
-<!--                        <div>-->
-<!--                            <strong th:text="${#temporals.format(note.createdOn, 'dd MMM yyyy')}">-->
-
-<!--                            </strong>-->
-<!--                        </div>-->
+                       <h3 th:text="${note.title}"></h3>
                     </div>
                     <div class="card-body">
-<!--                        <span th:text="${note.shortDescription}"></span>-->
                         <a th:href="@{/note/{noteUrl}(noteUrl=${note.url})}">Read my note</a>
                     </div>
                 </div>
