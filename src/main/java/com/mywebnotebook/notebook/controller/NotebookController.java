@@ -25,6 +25,7 @@ public class NotebookController {
     public String welcome() {
         return "welcome_page";
     }
+
     //search page
     //http://localhost:8080/search
     @GetMapping("/search")
@@ -32,6 +33,9 @@ public class NotebookController {
         return "notebook/search";
     }
 
+    //view all notes from visitor side
+    //anybody can see it
+    //http://localhost:8080/main
     @GetMapping("/main")
     public String viewNotebookNotes(Model model) {
         List<NoteDto> notesResponse = noteService.findAllNotes();
