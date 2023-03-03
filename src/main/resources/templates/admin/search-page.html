@@ -1,32 +1,39 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org">
-<div th:replace="admin/header :: header"></div>
+<head>
+    <div th:replace="admin/header :: header"></div>
+    <link rel="stylesheet" th:href="@{/css/search.css}">
+</head>
+
 <body>
 <div th:replace="admin/header :: navbar"></div>
-<br /><br />
-<div class="container">
-  <div class="row col-md-6 offset-md-4">
-    <div class="card" th:fragment="search">
-      <div class="card-header">
-        <h3 class="text-center">Notebook search</h3>
-      </div>
-      <div class="card-body">
-        <div class="form-group">
-          <form class="form-inline" th:action="@{/admin/notes/search}">
-            <div class="input-group">
-              <input class="form-control" name="query"/>
-              <span class = "input-group-btn">
-                            <button class="btn btn-primary" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+<br/><br/>
+<div class="notebook">
+    <div class="container">
+        <div class="row col-md-6 offset-md-4">
+            <div class="card" th:fragment="search">
+                <div class="card-header">
+                    <h3 class="text-center">Notebook search</h3>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <form class="form-inline" th:action="@{/admin/notes/search}">
+                            <div class="input-group">
+                                <input class="form-control" name="query"/>
+                                <span class="input-group-btn">
+                            <button class="btn btn-primary" type="submit"><i
+                                    class="fa-solid fa-magnifying-glass"></i></button>
                         </span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <br/> <br/> <br/> <br/>
             </div>
-          </form>
         </div>
-      </div>
-      <br/> <br/> <br/> <br/>
     </div>
-  </div>
 </div>
-  <div th:replace="admin/footer::footer"></div>
+<div th:replace="admin/footer::footer"></div>
 </body>
 </html>
