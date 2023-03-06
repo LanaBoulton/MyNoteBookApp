@@ -19,7 +19,6 @@ public class ToDoController {
     public ToDoController(ToDoService service) {
     }
 
-
     @GetMapping("/admin/todo")
     public String viewHomePage(Model model) {
         List<ToDo> listToDo = service.listAll();
